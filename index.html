@@ -29,21 +29,6 @@ h1 {
     color: #800020;
 }
 
-/* NEW: Couple Tag */
-#coupleTag {
-    display: none;
-    font-size: 28px;
-    color: #b03060;
-    font-weight: bold;
-    margin-bottom: 10px;
-    animation: fadeInTag 1s ease forwards;
-}
-
-@keyframes fadeInTag {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
 .photo-wrapper {
     margin: 20px 0 30px 0;
 }
@@ -94,6 +79,22 @@ button {
     font-size: 20px;
     color: #800020;
     animation: fadeIn 0.6s ease-in-out;
+}
+
+/* Soft Gold Hashtag */
+#coupleTag {
+    display: inline-block;
+    margin-top: 20px;
+    font-size: 26px;
+    font-weight: bold;
+    color: #d4af37;
+    text-shadow: 0 0 6px rgba(212,175,55,0.6);
+    animation: fadeInTag 1.2s ease forwards;
+}
+
+@keyframes fadeInTag {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes fadeIn {
@@ -149,9 +150,6 @@ button {
 <div class="container">
     <h1>Preet… 💗<br>Will you be my Valentine?</h1>
 
-    <!-- NEW TAG -->
-    <div id="coupleTag">#SahibDiSahiba</div>
-
     <div class="photo-wrapper">
         <img src="images/us.jpg" alt="Us Together">
     </div>
@@ -167,6 +165,9 @@ button {
         I just want you beside me.<br><br>
         Thank you for being mine.<br>
         Happy Valentine’s Day, my love. 💗
+        
+        <br><br>
+        <span id="coupleTag">#SahibDiSahiba ✨</span>
     </div>
 </div>
 
@@ -197,7 +198,6 @@ const noBtn = document.getElementById("noBtn");
 const finalMessage = document.getElementById("finalMessage");
 const popup = document.getElementById("popupOverlay");
 const popupBox = document.getElementById("popupBox");
-const coupleTag = document.getElementById("coupleTag");
 
 // NO button logic
 noBtn.addEventListener("pointerdown", function() {
@@ -244,7 +244,6 @@ yesBtn.addEventListener("pointerdown", function() {
     }
 
     finalMessage.style.display = "block";
-    coupleTag.style.display = "block";
 
     setTimeout(() => {
         finalMessage.scrollIntoView({
