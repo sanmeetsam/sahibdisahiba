@@ -29,6 +29,21 @@ h1 {
     color: #800020;
 }
 
+/* NEW: Couple Tag */
+#coupleTag {
+    display: none;
+    font-size: 28px;
+    color: #b03060;
+    font-weight: bold;
+    margin-bottom: 10px;
+    animation: fadeInTag 1s ease forwards;
+}
+
+@keyframes fadeInTag {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
 .photo-wrapper {
     margin: 20px 0 30px 0;
 }
@@ -134,6 +149,9 @@ button {
 <div class="container">
     <h1>Preet… 💗<br>Will you be my Valentine?</h1>
 
+    <!-- NEW TAG -->
+    <div id="coupleTag">#SahibDiSahiba</div>
+
     <div class="photo-wrapper">
         <img src="images/us.jpg" alt="Us Together">
     </div>
@@ -179,6 +197,7 @@ const noBtn = document.getElementById("noBtn");
 const finalMessage = document.getElementById("finalMessage");
 const popup = document.getElementById("popupOverlay");
 const popupBox = document.getElementById("popupBox");
+const coupleTag = document.getElementById("coupleTag");
 
 // NO button logic
 noBtn.addEventListener("pointerdown", function() {
@@ -209,7 +228,6 @@ noBtn.addEventListener("pointerdown", function() {
         noBtn.style.fontSize = noFont + "px";
     }
 
-    // Show popup AFTER final message appears (5th click)
     if (noClickCount === noMessages.length) {
         popupBox.innerHTML = "Okay okay… enough being pricey. Just be mine already 🥺💗";
         popup.style.display = "flex";
@@ -226,8 +244,8 @@ yesBtn.addEventListener("pointerdown", function() {
     }
 
     finalMessage.style.display = "block";
+    coupleTag.style.display = "block";
 
-    // Smooth auto scroll to final message
     setTimeout(() => {
         finalMessage.scrollIntoView({
             behavior: "smooth",
@@ -259,4 +277,3 @@ setInterval(createHeart, 400);
 
 </body>
 </html>
-
