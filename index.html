@@ -81,12 +81,6 @@ button {
     animation: fadeIn 0.6s ease-in-out;
 }
 
-.teaseMessage {
-    margin-top: 20px;
-    font-size: 16px;
-    color: #b03060;
-}
-
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(10px); }
     to { opacity: 1; transform: translateY(0); }
@@ -149,8 +143,6 @@ button {
         <button id="noBtn">I’m not sure 🥺</button>
     </div>
 
-    <div class="teaseMessage" id="teaseText"></div>
-
     <div id="finalMessage">
         I knew it. 🤍<br><br>
         No matter where life takes us,<br>
@@ -174,6 +166,14 @@ let noWidth = 200, noHeight = 55, noFont = 16;
 let noClickCount = 0;
 let noWasClicked = false;
 
+const noMessages = [
+    "Are you sure? 🥺",
+    "Think again… 💔",
+    "That hurts 😢",
+    "I’ll cry you know 😭",
+    "Fine… but I still love you 🥹"
+];
+
 const yesBtn = document.getElementById("yesBtn");
 const noBtn = document.getElementById("noBtn");
 const finalMessage = document.getElementById("finalMessage");
@@ -184,6 +184,11 @@ const popupBox = document.getElementById("popupBox");
 noBtn.addEventListener("pointerdown", function() {
 
     noWasClicked = true;
+
+    if (noClickCount < noMessages.length) {
+        noBtn.innerHTML = noMessages[noClickCount];
+    }
+
     noClickCount++;
 
     if (noWidth > 70) {
@@ -204,7 +209,8 @@ noBtn.addEventListener("pointerdown", function() {
         noBtn.style.fontSize = noFont + "px";
     }
 
-    if (noClickCount === 4) {
+    // Show popup AFTER final message appears (5th click)
+    if (noClickCount === noMessages.length) {
         popupBox.innerHTML = "Enough!! Stop Acting so Pricey Now and be mine please 😘";
         popup.style.display = "flex";
     }
@@ -222,7 +228,7 @@ yesBtn.addEventListener("pointerdown", function() {
     finalMessage.style.display = "block";
 });
 
-// Close popup when tapping anywhere
+// Close popup
 popup.addEventListener("pointerdown", function() {
     popup.style.display = "none";
 });
@@ -242,7 +248,6 @@ function createHeart() {
 
 setInterval(createHeart, 400);
 </script>
-
 
 </body>
 </html>
